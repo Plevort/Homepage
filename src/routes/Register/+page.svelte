@@ -3,7 +3,7 @@
   
     const email = writable('');
     const password = writable('');
-    const passwordConfirm = writable(''); // New writable store for password confirmation
+    const passwordConfirm = writable('');
     const username = writable('');
     const error = writable('');
     const success = writable('');
@@ -15,7 +15,7 @@
         const userData = {
             email: $email,
             password: $password,
-            passwordConfirm: $passwordConfirm, // Include passwordConfirm in the user data
+            passwordConfirm: $passwordConfirm,
             username: $username
         };
   
@@ -28,23 +28,21 @@
                 body: JSON.stringify(userData)
             });
   
-            // Check if the response is OK (status in the range 200-299)
             if (response.ok) {
                 const data = await response.json();
                 success.set(data.message);
             } else {
-                // Attempt to extract the error message from the response
                 const data = await response.json();
                 error.set(data.error || 'An unexpected error occurred.');
             }
         } catch (err) {
-            console.error(err); // Log the error for debugging
+            console.error(err);
             error.set('Network error. Please try again later.');
         }
     };
-  </script>
+</script>
   
-  <style>
+<style>
     html, body {
         margin: 0;
         padding: 0;
@@ -123,9 +121,9 @@
     label {
         color: #f0f0f0;
     }
-  </style>
+</style>
   
-  <header>
+<header>
     <div class="logo">Plevort</div>
     <nav>
         <ul>
@@ -137,13 +135,21 @@
             <li><a href="/Support">Support</a></li>
         </ul>
     </nav>
-  </header>
-  
-  <form on:submit|preventDefault={registerUser}>
-    <input type="email" bind:value={$email} placeholder="Email" required />
-    <input type="password" bind:value={$password} placeholder="Password" required />
-    <input type="password" bind:value={$passwordConfirm} placeholder="Confirm Password" required /> <!-- New input for confirmation -->
-    <input type="text" bind:value={$username} placeholder="Username" required />
+</header>
+
+<form on:submit|preventDefault={registerUser}>
+    <label>Email</label>
+    <input type="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
+
+    <label>Password</label>
+    <input type="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
+
+    <label>Confirm Password</label>
+    <input type="password" bind:value={$passwordConfirm} placeholder="e.g., jSZ5?G23AKh7" required />
+
+    <label>Username</label>
+    <input type="text" bind:value={$username} placeholder="e.g., johndoe123" required />
+
     <label>
         <input type="checkbox" required /> I accept the <a href="./Privacy">Privacy Policy</a> and <a href="./Tos">Terms of Service</a>.
     </label>
@@ -155,5 +161,4 @@
     {#if $success}
         <p class="success">Success: {$success}</p>
     {/if}
-  </form>
-  
+</form>

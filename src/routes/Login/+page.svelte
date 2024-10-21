@@ -1,4 +1,3 @@
-<!-- src/Login.svelte -->
 <script>
     import { writable } from 'svelte/store';
 
@@ -24,7 +23,7 @@
 
         if (response.ok) {
             const data = await response.json();
-            success.set(data.message); // Customize this based on your API response
+            success.set(data.message);
         } else {
             const data = await response.json();
             if (data.error) {
@@ -37,7 +36,6 @@
 </script>
 
 <style>
-    /* Styles for the login form */
     form {
         display: flex;
         flex-direction: column;
@@ -113,8 +111,12 @@
 </header>
 
 <form on:submit|preventDefault={loginUser}>
-    <input type="email" bind:value={$email} placeholder="Email" required />
-    <input type="password" bind:value={$password} placeholder="Password" required />
+    <label>Email</label>
+    <input type="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
+
+    <label>Password</label>
+    <input type="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
+
     <button type="submit">Login</button>
 
     {#if $error}
