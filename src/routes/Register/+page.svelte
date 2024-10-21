@@ -4,7 +4,6 @@
     const email = writable('');
     const password = writable('');
     const username = writable('');
-    const displayName = writable('');
     const error = writable('');
     const success = writable('');
 
@@ -18,24 +17,28 @@
             username: $username
         };
 
-        const response = await fetch('https://plevortapi.fryde.id.lv/v1/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        });
+        try {
+            const response = await fetch('https://plevortapi.fryde.id.lv/v1/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
 
-        if (response.ok) {
-            const data = await response.json();
-            success.set(data.message);
-        } else {
-            const data = await response.json();
-            if (data.error) {
-                error.set(data.error);
+            if (response.ok) {
+                const data = await response.json();
+                success.set(data.message);
             } else {
-                error.set('An unexpected error occurred. Please try again later.');
+                const data = await response.json();
+                if (data.error) {
+                    error.set(data.error);
+                } else {
+                    error.set('An unexpected error occurred. Please try again later.');
+                }
             }
+        } catch (err) {
+            error.set('Network error. Please try again later.');
         }
     };
 </script>
