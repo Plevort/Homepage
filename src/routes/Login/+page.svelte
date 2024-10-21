@@ -1,54 +1,126 @@
+<!-- src/Login.svelte -->
 <script>
-  let username = '';
-  let password = '';
-  
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Register", href: "./Register" },
-    { name: "Login", href: "./Login" },
-    { name: "Privacy Policy", href: "/Privacy" },
-    { name: "Terms Of Service", href: "/Tos" },
-    { name: "Support", href: "/Support" },
-  ];
+    import { writable } from 'svelte/store';
 
-  function handleLogin(event) {
-    event.preventDefault();
-    console.log('Logging in:', { username, password });
-  }
+    const email = writable('');
+    const password = writable('');
+    const error = writable('');
+    const success = writable('');
+
+    const loginUser = async () => {
+        error.set('');
+        success.set('');
+
+        const response = await fetch('https://plevortapi.fryde.id.lv/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: $email,
+                password: $password
+            })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            success.set(data.message); // Customize this based on your API response
+        } else {
+            const data = await response.json();
+            if (data.error) {
+                error.set(data.error);
+            } else {
+                error.set('An unexpected error occurred. Please try again later.');
+            }
+        }
+    };
 </script>
 
+<style>
+    /* Styles for the login form */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 1rem 0;
+    }
+
+    input {
+        padding: 0.8rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #5865F2;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5rem 3rem;
+        background-color: #111;
+    }
+
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 3rem;
+    }
+
+    nav ul li a {
+        color: #f0f0f0;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+</style>
+
 <header>
-  <div class="logo"><a href="/">Plevort</a></div>
-  <nav>
-    <ul>
-      {#each navItems as item}
-        <li><a href={item.href}>{item.name}</a></li>
-      {/each}
-    </ul>
-  </nav>
+    <div class="logo">Plevort</div>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="./Register">Register</a></li>
+            <li><a href="./Login">Login</a></li>
+            <li><a href="./Privacy">Privacy Policy</a></li>
+            <li><a href="./Tos">Terms of Service</a></li>
+            <li><a href="/Support">Support</a></li>
+        </ul>
+    </nav>
 </header>
 
-<section class="form-section">
-  <div class="form-container">
-    <h1>Login</h1>
-    <form on:submit={handleLogin}>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" bind:value={username} required />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" bind:value={password} required />
-      </div>
-      <button type="submit" class="btn">Login</button>
-    </form>
-  </div>
-</section>
+<form on:submit|preventDefault={loginUser}>
+    <input type="email" bind:value={$email} placeholder="Email" required />
+    <input type="password" bind:value={$password} placeholder="Password" required />
+    <button type="submit">Login</button>
 
-<footer>
-  <p>© 2024 The Plevort Team</p>
-</footer>
-
-<style>
-  @import './App.css';
-</style>
+    {#if $error}
+        <p class="error">Error: {$error}</p>
+    {/if}
+    {#if $success}
+        <p class="success">Success: {$success}</p>
+    {/if}
+</form>
