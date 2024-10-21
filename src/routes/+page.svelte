@@ -1,9 +1,9 @@
 <script>
   let links = [
     { name: "Home", href: "/" },
-    { name: "Register", href: "./register" },
-    { name: "Login", href: "./login" },
-    { name: "Privacy Policy", href: "/privacypolicy" },
+    { name: "Register", href: "/register" },
+    { name: "Login", href: "/login" },
+    { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms Of Service", href: "/tos" },
     { name: "Support", href: "/support" },
   ];
@@ -25,8 +25,8 @@
     <h1>Welcome to Plevort</h1>
     <p>Connect with your friends and communities with our amazing chat app.</p>
     <div class="buttons">
-      <a href="./register" class="btn">Register</a>
-      <a href="./login" class="btn">Login</a>
+      <a href="/register" class="btn">Register</a>
+      <a href="/login" class="btn">Login</a>
     </div>
   </div>
 </section>

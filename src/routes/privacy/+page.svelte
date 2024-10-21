@@ -1,9 +1,9 @@
 <script>
   let links = [
     { name: "Home", href: "/" },
-    { name: "Register", href: "./register" },
-    { name: "Login", href: "./login" },
-    { name: "Privacy Policy", href: "/privacypolicy" },
+    { name: "Register", href: "/register" },
+    { name: "Login", href: "/login" },
+    { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms Of Service", href: "/tos" },
     { name: "Support", href: "/support" },
   ];
