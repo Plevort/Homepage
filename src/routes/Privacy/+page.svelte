@@ -69,7 +69,7 @@
     <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this policy are effective when they are posted on this page.</p>
 
     <h2>8. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+    <p>If you have any questions about this Privacy Policy, or want your data to be deleted please contact us at:</p>
     <p><strong>Email:</strong>ronalds1938@gmail.com</p>
   </div>
 </main>
