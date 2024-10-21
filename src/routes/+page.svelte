@@ -2,8 +2,8 @@
   let links = [
     { name: "Register", href: "./Register" },
     { name: "Login", href: "./Login" },
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms Of Service", href: "#" },
+    { name: "Privacy Policy", href: "/Privacy" },
+    { name: "Terms Of Service", href: "/Tos" },
     { name: "Support", href: "#" },
   ];
 </script>
