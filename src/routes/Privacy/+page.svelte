@@ -70,7 +70,7 @@
 
     <h2>8. Contact Us</h2>
     <p>If you have any questions about this Privacy Policy, or want your data to be deleted please contact us at:</p>
-    <p><strong>Email:</strong>ronalds1938@gmail.com</p>
+    <p><strong>Email:</strong>plevortapp@gmail.com</p>
   </div>
 </main>
 
