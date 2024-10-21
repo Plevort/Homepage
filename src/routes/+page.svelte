@@ -1,11 +1,11 @@
 <script>
   let links = [
     { name: "Home", href: "/" },
-    { name: "Register", href: "./Register" },
-    { name: "Login", href: "./Login" },
-    { name: "Privacy Policy", href: "/Privacy" },
-    { name: "Terms Of Service", href: "/Tos" },
-    { name: "Support", href: "/Support" },
+    { name: "Register", href: "./register" },
+    { name: "Login", href: "./login" },
+    { name: "Privacy Policy", href: "/privacypolicy" },
+    { name: "Terms Of Service", href: "/tos" },
+    { name: "Support", href: "/support" },
   ];
 </script>
 
