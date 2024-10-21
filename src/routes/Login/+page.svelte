@@ -33,68 +33,9 @@
             }
         }
     };
+
+    import "./login.css";
 </script>
-
-<style>
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        margin: 1rem 0;
-    }
-
-    input {
-        padding: 0.8rem;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        background-color: #5865F2;
-        color: #fff;
-        padding: 1rem;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-    }
-
-    .error {
-        color: red;
-    }
-
-    .success {
-        color: green;
-    }
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        padding: 1.5rem 3rem;
-        background-color: #111;
-    }
-
-    .logo {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-
-    nav ul li {
-        margin-left: 3rem;
-    }
-
-    nav ul li a {
-        color: #f0f0f0;
-        text-decoration: none;
-        font-size: 1.1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-    }
-</style>
 
 <header>
     <div class="logo">Plevort</div>
@@ -111,11 +52,11 @@
 </header>
 
 <form on:submit|preventDefault={loginUser}>
-    <label>Email</label>
-    <input type="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
+    <label for="email">Email</label>
+    <input type="email" id="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
 
-    <label>Password</label>
-    <input type="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
+    <label for="password">Password</label>
+    <input type="password" id="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
 
     <button type="submit">Login</button>
 

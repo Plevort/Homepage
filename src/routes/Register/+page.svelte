@@ -40,88 +40,9 @@
             error.set('Network error. Please try again later.');
         }
     };
+
+    import './register.css';
 </script>
-  
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 100%;
-        background-color: #121212;
-        color: #f0f0f0;
-        font-family: 'Inter', sans-serif;
-    }
-  
-    header {
-        display: flex;
-        justify-content: space-between;
-        padding: 1.5rem 3rem;
-        background-color: #111;
-    }
-  
-    .logo {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-  
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-  
-    nav ul li {
-        margin-left: 3rem;
-    }
-  
-    nav ul li a {
-        color: #f0f0f0;
-        text-decoration: none;
-        font-size: 1.1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-    }
-  
-    nav ul li a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-  
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        margin: 2rem 3rem;
-    }
-  
-    input {
-        padding: 0.8rem;
-        border-radius: 5px;
-        border: 1px solid #444;
-        background-color: #222;
-        color: #f0f0f0;
-    }
-  
-    button {
-        background-color: #5865F2;
-        color: #fff;
-        padding: 1rem;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-    }
-  
-    .error {
-        color: red;
-    }
-  
-    .success {
-        color: green;
-    }
-  
-    label {
-        color: #f0f0f0;
-    }
-</style>
   
 <header>
     <div class="logo">Plevort</div>
@@ -138,21 +59,22 @@
 </header>
 
 <form on:submit|preventDefault={registerUser}>
-    <label>Email</label>
-    <input type="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
+    <label for="email">Email</label>
+    <input type="email" id="email" bind:value={$email} placeholder="e.g., example@domain.com" required />
 
-    <label>Password</label>
-    <input type="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
+    <label for="password">Password</label>
+    <input type="password" id="password" bind:value={$password} placeholder="e.g., jSZ5?G23AKh7" required />
 
-    <label>Confirm Password</label>
-    <input type="password" bind:value={$passwordConfirm} placeholder="e.g., jSZ5?G23AKh7" required />
+    <label for="passwordConfirm">Confirm Password</label>
+    <input type="password" id="passwordConfirm" bind:value={$passwordConfirm} placeholder="e.g., jSZ5?G23AKh7" required />
 
-    <label>Username</label>
-    <input type="text" bind:value={$username} placeholder="e.g., johndoe123" required />
+    <label for="username">Username</label>
+    <input type="text" id="username" bind:value={$username} placeholder="e.g., johndoe123" required />
 
     <label>
         <input type="checkbox" required /> I accept the <a href="./Privacy">Privacy Policy</a> and <a href="./Tos">Terms of Service</a>.
     </label>
+    
     <button type="submit">Register</button>
   
     {#if $error}
