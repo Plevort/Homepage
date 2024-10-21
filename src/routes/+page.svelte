@@ -4,7 +4,7 @@
     { name: "Login", href: "./Login" },
     { name: "Privacy Policy", href: "/Privacy" },
     { name: "Terms Of Service", href: "/Tos" },
-    { name: "Support", href: "#" },
+    { name: "Support", href: "/Support" },
   ];
 </script>
 
