@@ -1,22 +1,24 @@
 <script>
     import { writable } from 'svelte/store';
-
+  
     const email = writable('');
     const password = writable('');
+    const passwordConfirm = writable(''); // New writable store for password confirmation
     const username = writable('');
     const error = writable('');
     const success = writable('');
-
+  
     const registerUser = async () => {
         error.set('');
         success.set('');
-
+  
         const userData = {
             email: $email,
             password: $password,
+            passwordConfirm: $passwordConfirm, // Include passwordConfirm in the user data
             username: $username
         };
-
+  
         try {
             const response = await fetch('https://plevortapi.fryde.id.lv/v1/register', {
                 method: 'POST',
@@ -25,25 +27,24 @@
                 },
                 body: JSON.stringify(userData)
             });
-
+  
+            // Check if the response is OK (status in the range 200-299)
             if (response.ok) {
                 const data = await response.json();
                 success.set(data.message);
             } else {
+                // Attempt to extract the error message from the response
                 const data = await response.json();
-                if (data.error) {
-                    error.set(data.error);
-                } else {
-                    error.set('An unexpected error occurred. Please try again later.');
-                }
+                error.set(data.error || 'An unexpected error occurred.');
             }
         } catch (err) {
+            console.error(err); // Log the error for debugging
             error.set('Network error. Please try again later.');
         }
     };
-</script>
-
-<style>
+  </script>
+  
+  <style>
     html, body {
         margin: 0;
         padding: 0;
@@ -53,28 +54,28 @@
         color: #f0f0f0;
         font-family: 'Inter', sans-serif;
     }
-
+  
     header {
         display: flex;
         justify-content: space-between;
         padding: 1.5rem 3rem;
         background-color: #111;
     }
-
+  
     .logo {
         font-size: 2rem;
         font-weight: bold;
     }
-
+  
     nav ul {
         display: flex;
         list-style: none;
     }
-
+  
     nav ul li {
         margin-left: 3rem;
     }
-
+  
     nav ul li a {
         color: #f0f0f0;
         text-decoration: none;
@@ -82,18 +83,18 @@
         padding: 0.5rem 1rem;
         border-radius: 5px;
     }
-
+  
     nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.1);
     }
-
+  
     form {
         display: flex;
         flex-direction: column;
         gap: 1em;
         margin: 2rem 3rem;
     }
-
+  
     input {
         padding: 0.8rem;
         border-radius: 5px;
@@ -101,7 +102,7 @@
         background-color: #222;
         color: #f0f0f0;
     }
-
+  
     button {
         background-color: #5865F2;
         color: #fff;
@@ -110,21 +111,21 @@
         border: none;
         cursor: pointer;
     }
-
+  
     .error {
         color: red;
     }
-
+  
     .success {
         color: green;
     }
-
+  
     label {
         color: #f0f0f0;
     }
-</style>
-
-<header>
+  </style>
+  
+  <header>
     <div class="logo">Plevort</div>
     <nav>
         <ul>
@@ -136,21 +137,23 @@
             <li><a href="/Support">Support</a></li>
         </ul>
     </nav>
-</header>
-
-<form on:submit|preventDefault={registerUser}>
+  </header>
+  
+  <form on:submit|preventDefault={registerUser}>
     <input type="email" bind:value={$email} placeholder="Email" required />
     <input type="password" bind:value={$password} placeholder="Password" required />
+    <input type="password" bind:value={$passwordConfirm} placeholder="Confirm Password" required /> <!-- New input for confirmation -->
     <input type="text" bind:value={$username} placeholder="Username" required />
     <label>
         <input type="checkbox" required /> I accept the <a href="./Privacy">Privacy Policy</a> and <a href="./Tos">Terms of Service</a>.
     </label>
     <button type="submit">Register</button>
-
+  
     {#if $error}
         <p class="error">Error: {$error}</p>
     {/if}
     {#if $success}
         <p class="success">Success: {$success}</p>
     {/if}
-</form>
+  </form>
+  
