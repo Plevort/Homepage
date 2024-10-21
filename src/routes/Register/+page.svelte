@@ -139,7 +139,6 @@
     <input type="email" bind:value={$email} placeholder="Email" required />
     <input type="password" bind:value={$password} placeholder="Password" required />
     <input type="text" bind:value={$username} placeholder="Username" required />
-    <input type="text" bind:value={$displayName} placeholder="Display Name" />
     <label>
         <input type="checkbox" required /> I accept the <a href="./Privacy">Privacy Policy</a> and <a href="./Tos">Terms of Service</a>.
     </label>
