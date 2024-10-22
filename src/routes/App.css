@@ -20,13 +20,19 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 3rem;
+    width: 100%; /* Make the header take full width */
     background-color: #111;
+    padding: 1.5rem 0; /* Remove side padding */
 }
 
 .logo {
     font-size: 2rem;
     font-weight: bold;
+    margin-left: 3rem; /* Optional: Add some margin to the left for logo */
+}
+
+nav {
+    margin-right: 3rem; /* Optional: Add some margin to the right for nav */
 }
 
 nav ul {
@@ -85,10 +91,12 @@ p {
     text-decoration: none;
 }
 
-
 footer {
     background-color: #111;
-    padding: 1rem; 
+    width: 100%; 
+    padding: 1rem;    
     text-align: center;
     font-size: 1.2rem; 
+    position: relative; 
+    bottom: 0;           
 }

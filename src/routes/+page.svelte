@@ -24,8 +24,7 @@
     <h1>Welcome to Plevort</h1>
     <p>Connect with your friends and communities with our amazing chat app.</p>
     <div class="buttons">
-      <a href="/register" class="btn">Register</a>
-      <a href="/login" class="btn">Login</a>
+      <a href="https://app.plevort.fryde.id.lv/" class="btn">Get started!</a>
     </div>
   </div>
 </section>
