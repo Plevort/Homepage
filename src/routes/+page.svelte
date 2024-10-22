@@ -1,8 +1,6 @@
 <script>
   let links = [
     { name: "Home", href: "/" },
-    { name: "Register", href: "/register" },
-    { name: "Login", href: "/login" },
     { name: "Privacy Policy and TOS", href: "/privacyandterms" },
     { name: "Support", href: "/support" },
   ];
