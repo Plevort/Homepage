@@ -51,8 +51,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/tos">Terms of Service</a></li>
+            <li><a href="/privacyandterms">Privacy Policy and TOS</a></li>
             <li><a href="/support">Support</a></li>
         </ul>
     </nav>

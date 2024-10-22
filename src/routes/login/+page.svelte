@@ -1,14 +1,17 @@
 <script>
     import { writable } from 'svelte/store';
 
+
     const email = writable('');
     const password = writable('');
     const error = writable('');
     const success = writable('');
 
     const loginUser = async () => {
+ 
         error.set('');
         success.set('');
+
 
         const response = await fetch('https://plevortapi.fryde.id.lv/v1/login', {
             method: 'POST',
@@ -16,23 +19,25 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: $email,
-                password: $password
+                email: $email,    
+                password: $password 
             })
         });
 
+      
         if (response.ok) {
             const data = await response.json();
             success.set(data.message);
         } else {
             const data = await response.json();
             if (data.error) {
-                error.set(data.error);
+                error.set(data.error); 
             } else {
-                error.set('An unexpected error occurred. Please try again later.');
+                error.set('An unexpected error occurred. Please try again later.'); 
             }
         }
     };
+
 
     import "./login.css";
 </script>
@@ -44,12 +49,11 @@
             <li><a href="/">Home</a></li>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/tos">Terms of Service</a></li>
+            <li><a href="/privacyandterms">Privacy Policy and TOS</a></li>
             <li><a href="/support">Support</a></li>
         </ul>
     </nav>
-</header>
+</header> 
 
 <form on:submit|preventDefault={loginUser}>
     <label for="email">Email</label>

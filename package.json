@@ -6,19 +6,19 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Plevort/Homepage.git"
-	  },
-	  "keywords": [
+	},
+	"keywords": [
 		"nodejs",
 		"javascript",
 		"Homepage",
 		"sveltekit"
-	  ],
-	  "author": "Plevort",
-	  "license": "CC0-1.0",
-	  "bugs": {
+	],
+	"author": "Plevort",
+	"license": "CC0-1.0",
+	"bugs": {
 		"url": "https://github.com/Plevort/Homepage/issues"
-	  },
-	  "homepage": "https://github.com/Plevort/Homepage#readme",
+	},
+	"homepage": "https://github.com/Plevort/Homepage#readme",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",

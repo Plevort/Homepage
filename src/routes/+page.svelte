@@ -3,8 +3,7 @@
     { name: "Home", href: "/" },
     { name: "Register", href: "/register" },
     { name: "Login", href: "/login" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms Of Service", href: "/tos" },
+    { name: "Privacy Policy and TOS", href: "/privacyandterms" },
     { name: "Support", href: "/support" },
   ];
 </script>
